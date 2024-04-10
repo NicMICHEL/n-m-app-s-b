@@ -1,6 +1,7 @@
 package com.safetynet;
 
 import com.safetynet.repository.FireStationRepository;
+import com.safetynet.repository.PersonRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.actuate.web.exchanges.InMemoryHttpExchangeRepository;
@@ -19,6 +20,7 @@ public class NMAppSBApplication implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         FireStationRepository.fireStationDeserializer();
+        PersonRepository.personDeserializer();
     }
 
     @Bean
