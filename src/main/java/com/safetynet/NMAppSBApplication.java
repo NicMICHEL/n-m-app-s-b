@@ -1,6 +1,7 @@
 package com.safetynet;
 
 import com.safetynet.repository.FireStationRepository;
+import com.safetynet.repository.MedicalRecordRepository;
 import com.safetynet.repository.PersonRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -21,6 +22,7 @@ public class NMAppSBApplication implements CommandLineRunner {
     public void run(String... args) throws Exception {
         FireStationRepository.fireStationDeserializer();
         PersonRepository.personDeserializer();
+        MedicalRecordRepository.medicalRecordDeserializer();
     }
 
     @Bean
