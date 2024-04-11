@@ -4,11 +4,10 @@ import com.safetynet.model.FireStation;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 
@@ -22,7 +21,7 @@ public class FireStationRepositoryTest {
 
 
     @BeforeEach
-    public void setUpPerTest() throws IOException {
+    public void setUpPerTest() {
         fireStationRepository = new FireStationRepository();
         fireStationsForTest.add(new FireStation("1111 RUE  AA", "11"));
         fireStationsForTest.add(new FireStation("2222 RUE  BB", "22"));
@@ -134,6 +133,34 @@ public class FireStationRepositoryTest {
                 }, "NotFoundException was expected");
         //then
         assertEquals("Unable to find fireStation corresponding to address 4 Manch S t", thrown.getMessage());
+    }
+
+    @Test
+    public void should_get_addresses_by_fireStation_successfully() throws NotFoundException {
+        //given
+        List<String> addressesExpected = new ArrayList<String>();
+        addressesExpected.add("1111 RUE  AA");
+        addressesExpected.add("4444 RUE  DD");
+        //when
+        TreeSet<String> addresses = fireStationRepository.getAddressesByFireStation("11");
+        //then
+        assertEquals(2, addresses.size());
+        Iterator iterator = addresses.iterator();
+        int i = 0;
+        while (iterator.hasNext()) {
+            assertEquals(addressesExpected.get(i), iterator.next());
+            i++;
+        }
+    }
+
+    @Test
+    public void should_throw_an_exception_when_firestation_corresponding_to_addresses_to_get_is_not_found() {
+        //when
+        NotFoundException thrown = assertThrows(NotFoundException.class, () -> {
+            fireStationRepository.getAddressesByFireStation("7777");
+        }, "NotFoundException was expected");
+        //then
+        assertEquals("Firestation 7777 not found in database", thrown.getMessage());
     }
 
 }

@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeSet;
 
 @Repository
 public class FireStationRepository {
@@ -78,6 +79,21 @@ public class FireStationRepository {
         } else {
             logger.error("Unable to find fireStation corresponding to address {}", address);
             throw new NotFoundException(String.format("Unable to find fireStation corresponding to address %s", address));
+        }
+    }
+
+    public TreeSet<String> getAddressesByFireStation(String firestation) throws NotFoundException {
+        TreeSet<String> addresses = new TreeSet<>();
+        for (Map.Entry<String, FireStation> entry : fireStationsByAddress.entrySet()) {
+            if ((entry.getValue().station()).equals(firestation)) {
+                addresses.add(entry.getValue().address());
+            }
+        }
+        if (!addresses.isEmpty()) {
+            return addresses;
+        } else {
+            logger.error("Firestation {} not found in database", firestation);
+            throw new NotFoundException(String.format("Firestation %s not found in database", firestation));
         }
     }
 

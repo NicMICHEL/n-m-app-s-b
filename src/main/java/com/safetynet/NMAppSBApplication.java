@@ -18,6 +18,8 @@ public class NMAppSBApplication implements CommandLineRunner {
 
     // When launching the application, convert the data file data.json to :
     //  - a list of fire stations
+    //  - a list of persons
+    //  - a list of medicalRecords
     @Override
     public void run(String... args) throws Exception {
         FireStationRepository.fireStationDeserializer();
