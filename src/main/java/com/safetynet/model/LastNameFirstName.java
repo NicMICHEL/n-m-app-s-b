@@ -1,2 +1,4 @@
-package com.safetynet.model;public record LastNameFirstName() {
+package com.safetynet.model;
+
+public record LastNameFirstName(String lastName, String firstName) {
 }
