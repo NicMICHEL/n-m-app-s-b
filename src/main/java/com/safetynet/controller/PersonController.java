@@ -17,9 +17,6 @@ public class PersonController {
     @Autowired
     private PersonService personService;
 
-    @Autowired
-    private MedicalRecordService medicalRecordService;
-
     @PostMapping
     public Person create(@RequestBody Person person) {
         return personService.save(person);
@@ -34,12 +31,10 @@ public class PersonController {
      * Delete - Delete a person
      * @param firstName,
      * @param lastName   - The firstName and lastName of the person to delete
-     * Delete the person's medicalRecord at the same time
      */
     @DeleteMapping("/{firstName}/{lastName}")
     public void delete(@PathVariable String firstName, @PathVariable String lastName) throws NotFoundException {
         personService.delete(firstName, lastName);
-        medicalRecordService.delete(firstName, lastName);
     }
 
     /**
