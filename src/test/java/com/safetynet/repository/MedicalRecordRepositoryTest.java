@@ -138,7 +138,7 @@ public class MedicalRecordRepositoryTest {
     }
 
     @Test
-    public void should_throw_an_exception_when_firstName_or_Lastname_corresponding_to_medicalRecord_to_update_is_not_found() {
+    public void should_throw_an_exception_when_firstName_or_lastname_corresponding_to_medicalRecord_to_update_is_not_found() {
         // given
         List<String> medicationsLola = new ArrayList<>();
         List<String> allergiesLola = new ArrayList<>();
@@ -170,7 +170,7 @@ public class MedicalRecordRepositoryTest {
     }
 
     @Test
-    public void should_throw_an_exception_when_firstName_or_Lastname_corresponding_to_medicalRecord_to_delete_is_not_found() {
+    public void should_throw_an_exception_when_firstName_or_lastname_corresponding_to_medicalRecord_to_delete_is_not_found() {
         // given
         MedicalRecord preExistingMedicalRecordAtTheseLasTNameFirstName
                 = MedicalRecordRepository.medicalRecordsByLastNameFirstName.get("MIGELola");
@@ -208,7 +208,7 @@ public class MedicalRecordRepositoryTest {
     }
 
     @Test
-    public void should_throw_an_exception_when_firstName_or_Lastname_corresponding_to_medicalRecord_to_find_is_not_found() {
+    public void should_throw_an_exception_when_firstName_or_lastname_corresponding_to_medicalRecord_to_find_is_not_found() {
         //when
         NotFoundException thrown = assertThrows(NotFoundException.class,
                 () -> {
@@ -229,7 +229,7 @@ public class MedicalRecordRepositoryTest {
     }
 
     @Test
-    public void should_throw_an_exception_when_firstName_or_Lastname_corresponding_to_age_to_get_is_not_found() {
+    public void should_throw_an_exception_when_firstName_or_lastname_corresponding_to_age_to_get_is_not_found() {
         //when
         NotFoundException thrown = assertThrows(NotFoundException.class,
                 () -> {
@@ -251,7 +251,7 @@ public class MedicalRecordRepositoryTest {
     }
 
     @Test
-    public void should_throw_an_exception_when_firstName_or_Lastname_corresponding_to_medications_to_get_is_not_found() {
+    public void should_throw_an_exception_when_firstName_or_lastname_corresponding_to_medications_to_get_is_not_found() {
         //when
         NotFoundException thrown = assertThrows(NotFoundException.class,
                 () -> {
@@ -273,7 +273,7 @@ public class MedicalRecordRepositoryTest {
     }
 
     @Test
-    public void should_throw_an_exception_when_firstName_or_Lastname_corresponding_to_allergies_to_get_is_not_found() {
+    public void should_throw_an_exception_when_firstName_or_lastname_corresponding_to_allergies_to_get_is_not_found() {
         //when
         NotFoundException thrown = assertThrows(NotFoundException.class,
                 () -> {

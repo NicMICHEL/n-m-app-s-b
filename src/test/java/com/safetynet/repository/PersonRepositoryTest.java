@@ -98,7 +98,7 @@ public class PersonRepositoryTest {
     }
 
     @Test
-    public void should_throw_an_exception_when_firstName_or_Lastname_corresponding_to_person_to_update_is_not_found() {
+    public void should_throw_an_exception_when_firstName_or_lastname_corresponding_to_person_to_update_is_not_found() {
         // given
         Person personTest = new Person("Lola", "MIGE",
                 "10th road", "Mees", "40111", "000-000-0001", "lola.mige@Imail.com");
@@ -125,7 +125,7 @@ public class PersonRepositoryTest {
     }
 
     @Test
-    public void should_throw_an_exception_when_firstName_or_Lastname_corresponding_to_person_to_delete_is_not_found() {
+    public void should_throw_an_exception_when_firstName_or_lastname_corresponding_to_person_to_delete_is_not_found() {
         //given
         Person preExistingPersonAtTheseLasTNameFirstName = PersonRepository.personsByLastNameFirstName.get("MIGELola");
         //when
@@ -150,7 +150,7 @@ public class PersonRepositoryTest {
     }
 
     @Test
-    public void should_throw_an_exception_when_firstName_or_Lastname_corresponding_to_person_to_find_is_not_found() {
+    public void should_throw_an_exception_when_firstName_or_lastname_corresponding_to_person_to_find_is_not_found() {
         //when
         NotFoundException thrown = assertThrows(NotFoundException.class,
                 () -> {
