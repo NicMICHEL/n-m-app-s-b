@@ -1,7 +1,7 @@
 package com.safetynet.controller;
 
 import com.safetynet.model.*;
-import com.safetynet.repository.NotFoundException;
+import com.safetynet.exception.NotFoundException;
 import com.safetynet.service.ServiceURL;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -31,9 +31,9 @@ public class ControllerURL {
         return service.getInfosByPerson(firstName, lastName);
     }
 
-    @RequestMapping("/flood/stations")
-    public HomesByFireStation getHomesByFireStation(@RequestParam String stations) throws NotFoundException {
-        return service.getHomesByFireStation(stations);
+    @RequestMapping("/flood/station")
+    public HomesByFireStation getHomesByFireStation(@RequestParam String station) throws NotFoundException {
+        return service.getHomesByFireStation(station);
     }
 
     @RequestMapping("/fire")

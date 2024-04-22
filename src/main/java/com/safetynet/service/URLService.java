@@ -4,9 +4,8 @@ package com.safetynet.service;
 import com.safetynet.model.*;
 import com.safetynet.repository.FireStationRepository;
 import com.safetynet.repository.MedicalRecordRepository;
-import com.safetynet.repository.NotFoundException;
+import com.safetynet.exception.NotFoundException;
 import com.safetynet.repository.PersonRepository;
-import lombok.Data;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +15,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeSet;
 
-@Data
+
 @org.springframework.stereotype.Service
 public class ServiceURL {
 
@@ -64,15 +63,15 @@ public class ServiceURL {
         return infosByPerson;
     }
 
-    public HomesByFireStation getHomesByFireStation(String stations) throws NotFoundException {
-        logger.debug("Getting Homes corresponding to firestation : {}", stations);
-        TreeSet<String> addresses = fireStationRepository.getAddressesByFireStation(stations);
+    public HomesByFireStation getHomesByFireStation(String station) throws NotFoundException {
+        logger.debug("Getting Homes corresponding to firestation : {}", station);
+        TreeSet<String> addresses = fireStationRepository.getAddressesByFireStation(station);
         List<HomeByAddress> homesByAddresses = new ArrayList<>();
         for (String address : addresses) {
             HomeByAddress homeByAddress = getHomeByAddress(address);
             homesByAddresses.add(homeByAddress);
         }
-        HomesByFireStation homesByFireStation = new HomesByFireStation(stations, homesByAddresses);
+        HomesByFireStation homesByFireStation = new HomesByFireStation(station, homesByAddresses);
         logger.info(homesByFireStation.toString());
         return homesByFireStation;
     }

@@ -4,7 +4,7 @@ package com.safetynet.service;
 import com.safetynet.model.*;
 import com.safetynet.repository.FireStationRepository;
 import com.safetynet.repository.MedicalRecordRepository;
-import com.safetynet.repository.NotFoundException;
+import com.safetynet.exception.NotFoundException;
 import com.safetynet.repository.PersonRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

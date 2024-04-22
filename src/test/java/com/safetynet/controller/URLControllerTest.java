@@ -129,7 +129,7 @@ public class ControllerURLTest {
         homesByAddresses.add(homeByAddress88th);
         HomesByFireStation homesByFireStationExpected = new HomesByFireStation("3", homesByAddresses);
         when(serviceURL.getHomesByFireStation("3")).thenReturn(homesByFireStationExpected);
-        mockMvc.perform(get("/flood/stations?stations={stations}", "3"))
+        mockMvc.perform(get("/flood/station?station={station}", "3"))
                 .andExpect(jsonPath("$.fireStation").value("3"))
                 .andExpect(jsonPath("$.homesByAddress").isArray())
                 .andExpect(jsonPath("$.homesByAddress", hasSize(2)))
